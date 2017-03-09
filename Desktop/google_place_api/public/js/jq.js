@@ -21,7 +21,7 @@ $(document).ready(function(){
 		let $changeHTML = $(this).children('span');
 
 		$.ajax({
-		  url: "http://localhost:8080/going",
+		  url: "https://protected-brook-14915.herokuapp.com/going",
 		  data: JSON.stringify({id: $id}),
 		  contentType: "application/json",
 		  type: "POST"
