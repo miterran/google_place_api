@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Security-Policy" content="default-src gap://ready file://* *; style-src 'self' http://* https://* 'unsafe-inline'; script-src 'self' http://* https://* 'unsafe-inline' 'unsafe-eval'">
+	<title>Google Place API</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="/public/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/public/js/main.js"></script>
+	<link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/public/css/style.css" />
+
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div class="masthead">
+			<h3 class="text-muted">Google Place API</h3>
+		</div>
+
+		<div class="jumbotron">
+			<h1 class="text-center">Plans tonight?</h1>
+			<p class="lead text-center">See which bars are hoppin' tonight and RSVP ahead of time!</br>
+				Remember: take a cab and drink responsibly.</p>
+
+				<form method="get" action="/search">
+					<div class="input-group searchBar">
+						<input type="text" class="form-control" placeholder="Search for..." name="query">
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-default">Go!</button>
+						</span>
+					</div>
+				</form>
+
+				<% if(club){ %>
+				<% for(let i = 0; i < club.length; i++){ %>
+				<div id="list" style="margin: 8px;" class="active-border">
+					<div class="media" style="padding: 8px;">
+						<div class="media-left media-middle">
+							<img class="media-object img-rounded" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=160&photoreference=<%= club[i].photos[0].photo_reference %>&key=<%= apiKey %>" alt="pic" width="160">
+						</div>
+						<div class="media-body" style="padding-left: 10px; padding-top: 10px;">
+
+							<% if(!user){ %>
+								<form method="get" action="/facebook">
+								<button class="btn btn-xs goingBtn"><span class="isGoing" id="<%= club[i].id %>">loading...</span> Going not loggin</button>
+								</form>
+							<% }else{ %>
+
+								<button class="gg btn btn-xs goingBtn"><span class="isGoing" id="<%= club[i].id %>">loading...</span> Going logged facebook</button>
+
+							<% } %>
+								
+
+
+						
+						<div style="margin-top: 10px;">
+							<h4 class="media-heading"><%= club[i].name %></h4>
+							<%= club[i].formatted_address %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<% } %>
+			<% } %>
+
+
+
+		</div>
+
+		<footer class="footer">
+			<p>&copy; 2016 Company, Inc.</p>
+		</footer>
+
+	</div> 
+	<script type="text/javascript" src="/public/js/jq.js"></script>
+</body>
+</html>
+
+
+

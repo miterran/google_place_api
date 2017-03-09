@@ -1,0 +1,31 @@
+.searchBar{
+	margin: auto;
+	width: 500px;
+}
+
+img {
+  object-fit: none; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  height: 100px;
+  width: 160px;
+}
+
+
+
+#list{
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+#list:hover{
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.going{
+    border: 1px solid white;
+}
+
+.going:hover{
+    border: 1px solid skyblue;
+}
